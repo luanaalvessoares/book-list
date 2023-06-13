@@ -37,4 +37,10 @@ class UI {
             document.querySelector('.alert').remove();
         }, 3000);
     }
+
+    deleteBook(target) {
+        if(target.className === 'delete') {
+            target.parentElement.remove();
+        }
+    }
 }
