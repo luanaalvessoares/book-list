@@ -17,4 +17,24 @@ class UI {
     
         list.appendChild(row);
     }
+
+    showAlert(message, className) {
+        const div = document.createElement('div');
+
+        // Add className
+        div.className = `alert ${className}`;
+        div.appendChild(document.createTextNode(message));
+        const container = document.querySelector('.container');
+
+        // Get form
+        const form = document.querySelector('#book-form');
+
+        // Insert alert
+        container.insertBefore(div, form);
+
+        // Timeout after 3 sec
+        setTimeout(function() {
+            document.querySelector('.alert').remove();
+        }, 3000);
+    }
 }
