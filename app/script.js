@@ -50,3 +50,34 @@ class UI {
         document.getElementById('isbn').value = '';
     }
 }
+
+// Event listening
+document.getElementById('book-form').addEventListener('submit', function(e) {
+    // Get form values
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const isbn = document.getElementById('isbn').value;
+
+    // Instantiate book
+    const book = new Book(title, author, isbn);
+
+    // Instantiate UI
+    const ui = new UI();
+
+    // Validate
+    if(title === '' || author === '' || isbn === '') {
+        // Show error alert
+        ui.showAlert('Please fill in all fields', 'error');
+    } else {
+        // Add book to list
+        ui.addBookToList(book);
+
+        // Show success
+        ui.showAlert('Book added', 'success');
+
+        // Clear fields
+        ui.clearFields();
+    }
+
+    e.preventDefault();
+});
